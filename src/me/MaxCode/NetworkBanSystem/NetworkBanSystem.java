@@ -14,6 +14,8 @@ public class NetworkBanSystem extends JavaPlugin {
 		DBManager.connect();
 		DBManager.checkAndCreateTable();
 		
+		this.getCommand("nbs").setExecutor(new Befehle());
+		
 		
 		
 	}

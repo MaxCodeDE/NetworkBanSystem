@@ -1,6 +1,5 @@
 package me.MaxCode.NetworkBanSystem;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -18,32 +17,46 @@ public class Befehle implements CommandExecutor {
 		Player p = (Player) sender;
 		
 		if (cmd.getName().equalsIgnoreCase("nbs")) {
-			p.sendMessage(str + "NetworkBanSystem Befehle:");
-			p.sendMessage("");
-			p.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Befehle:");
-			p.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "/nbs ban -> " + ChatColor.GRAY + "Bannt einen Spieler.");
-			p.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "/nbs info <name> -> " + ChatColor.GRAY + "Zeigt Info über Spieler.");
-		}
+			if (args.length == 0) {
+				p.sendMessage(str + "NetworkBanSystem Befehle:");
+				p.sendMessage("");
+				p.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Befehle:");
+				p.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "/nbs ban -> " + ChatColor.GRAY + "Bannt einen Spieler.");
+				p.sendMessage(ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "/nbs info <name> -> " + ChatColor.GRAY + "Zeigt Info über Spieler.");
+			}
 		
 		
 		
-		
-		if (cmd.getName().equalsIgnoreCase("nbs") && args.length >= 2) {
+		if (args.length == 2) {
 			
 			if (args[0].equalsIgnoreCase("ban")) {
 			String spielername = args[1].toLowerCase();
 			if (args[1].equalsIgnoreCase(spielername)) {
 				
-				//Integer zeit = Integer.valueOf(args[3].toLowerCase());
-				// TO-DO Timeban
-				
 				BanManager bm = new BanManager();
-				bm.banPlayer(Bukkit.getPlayer(spielername), args[2].toLowerCase(), null);
+				bm.banPlayer(spielername, null, null);
 				
 				p.sendMessage(str + "Spieler " + spielername + " wurde gebannt!");
 				
 			}
 			}
+		}
+		
+		if (args.length == 2) {
+			
+			if (args[0].equalsIgnoreCase("info")) {
+			String spielername = args[1].toLowerCase();
+			if (args[1].equalsIgnoreCase(spielername)) {
+				
+				BanManager bm = new BanManager();
+				
+				p.sendMessage(str + "Spieler " + ChatColor.BOLD + spielername + ChatColor.GRAY + " wurde aus folgenden Grund gebannt:");
+				p.sendMessage(ChatColor.GRAY + bm.getGrund(spielername));
+				
+			}
+			}
+		}
+		
 		}
 		
 		

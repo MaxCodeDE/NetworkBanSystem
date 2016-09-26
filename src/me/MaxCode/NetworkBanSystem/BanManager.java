@@ -1,14 +1,26 @@
 package me.MaxCode.NetworkBanSystem;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class BanManager {
 
 	
-	public void banPlayer(Player p, String grund, Integer zeit) {
+	public void banPlayer(String spielername, String grund, Integer zeit) {
+		
+		Player p = Bukkit.getPlayer(spielername);
+		
+		if (grund == null) {
+			grund = "Kein Grund angegben.";
+		}
+		if (zeit == null) {
+			zeit = 0;
+		}
+		
 		
 		
 		try {
@@ -28,6 +40,25 @@ public class BanManager {
 		
 	}
 	
+	
+	public String getGrund(String spielername) {
+		
+		Player p = Bukkit.getPlayer(spielername);
+		
+		try {
+			PreparedStatement ps = DBManager.getConnection().prepareStatement("SELECT Grund FROM BannedPlayers WHERE UUID = ?");
+			ps.setString(1, p.getUniqueId().toString());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				
+				return rs.getString("Grund");
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "Keine Gruhd vorhanden!";
+	}
 	
 	
 }
