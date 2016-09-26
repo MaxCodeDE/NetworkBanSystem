@@ -1,0 +1,9 @@
+name: NetworkBanSystem
+autohr: MaxCode
+version: 1.0
+main: me.MaxCode.NetworkBanSystem.NetworkBanSystem
+
+commands:
+     nbs:
+          usage:
+          default: op
