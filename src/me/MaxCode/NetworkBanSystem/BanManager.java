@@ -57,7 +57,7 @@ public class BanManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return "Keine Gruhd vorhanden!";
+		return "Keine Grund vorhanden!";
 	}
 	
 	

@@ -11,7 +11,6 @@ public class Befehle implements CommandExecutor {
 	public String str = ChatColor.DARK_GRAY + "[" + ChatColor.GREEN + "NetworkBanSystem" + ChatColor.DARK_GRAY + "] " + ChatColor.GRAY;
 	
 	
-	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String arg2, String[] args) {
 		
 		Player p = (Player) sender;
@@ -27,7 +26,7 @@ public class Befehle implements CommandExecutor {
 		
 		
 		
-		if (args.length == 2) {
+		if (args.length >= 2) {
 			
 			if (args[0].equalsIgnoreCase("ban")) {
 			String spielername = args[1].toLowerCase();
