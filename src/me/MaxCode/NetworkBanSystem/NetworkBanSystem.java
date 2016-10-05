@@ -1,5 +1,7 @@
 package me.MaxCode.NetworkBanSystem;
 
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class NetworkBanSystem extends JavaPlugin {
@@ -15,6 +17,10 @@ public class NetworkBanSystem extends JavaPlugin {
 		DBManager.checkAndCreateTable();
 		
 		this.getCommand("nbs").setExecutor(new Befehle());
+		this.getCommand("nbsui").setExecutor(new BefehleUI());
+		
+		PluginManager pm = Bukkit.getPluginManager();
+		pm.registerEvents(new UIEvents(), this);
 		
 		
 		

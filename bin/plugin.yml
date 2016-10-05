@@ -7,3 +7,6 @@ commands:
      nbs:
           usage:
           default: op
+     nbsui:
+          usage:
+          default: op
