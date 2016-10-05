@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 public class BefehleUI implements CommandExecutor {
 
 	
-	public String str = ChatColor.DARK_GRAY + "[" + ChatColor.GREEN + "NetworkBanSystem" + ChatColor.DARK_GRAY + "] " + ChatColor.GRAY;
+	public String str = MessageManager.str;
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String arg2, String[] args) {
 		

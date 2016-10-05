@@ -1,7 +1,6 @@
 package me.MaxCode.NetworkBanSystem;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,7 +9,7 @@ import org.bukkit.event.inventory.InventoryType.SlotType;
 
 public class UIEvents implements Listener {
 
-	public String str = ChatColor.DARK_GRAY + "[" + ChatColor.GREEN + "NetworkBanSystem" + ChatColor.DARK_GRAY + "] " + ChatColor.GRAY;
+	public String str = MessageManager.str;
 	
 	@EventHandler
 	public void ItemKlickVoid(InventoryClickEvent e) {
