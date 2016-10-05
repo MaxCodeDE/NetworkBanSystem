@@ -49,8 +49,12 @@ public class Befehle implements CommandExecutor {
 				
 				BanManager bm = new BanManager();
 				
-				p.sendMessage(str + "Spieler " + ChatColor.BOLD + spielername + ChatColor.GRAY + " wurde aus folgenden Grund gebannt:");
-				p.sendMessage(ChatColor.GRAY + bm.getGrund(spielername));
+				if (bm.getGrund(spielername) == null) {
+					p.sendMessage(str + "Es wurde kein Spieler mit dem Namen " + ChatColor.BOLD + spielername + ChatColor.GRAY + " gebannt");
+				} else {
+					p.sendMessage(str + "Spieler " + ChatColor.BOLD + spielername + ChatColor.GRAY + " wurde aus folgenden Grund gebannt:");
+					p.sendMessage(ChatColor.GRAY + bm.getGrund(spielername));
+				}
 				
 			}
 			}

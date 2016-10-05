@@ -15,7 +15,7 @@ public class BanManager {
 		Player p = Bukkit.getPlayer(spielername);
 		
 		if (grund == null) {
-			grund = "Kein Grund angegben.";
+			grund = "Kein Grund vorhanden";
 		}
 		if (zeit == null) {
 			zeit = 0;
@@ -57,7 +57,7 @@ public class BanManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return "Keine Grund vorhanden!";
+		return null;
 	}
 	
 	
